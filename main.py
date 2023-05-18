@@ -7,17 +7,21 @@ def crear_matriz():
     for i in range(orden):
         fila = input(f"Ingrese los valores para la fila {i+1} separados por espacios: ")
         valores = fila.split()
-        valores_float = [float(valor) for valor in valores]
+        valores_float = []
+        for valor in valores:
+            valor_float = float(valor)
+            valores_float.append(valor_float)
         matriz[i] = valores_float
 
     return matriz
 
 # Ejemplo de uso
 matriz = crear_matriz()
+print(matriz,"\n")
 listavaloresP=[]
 inicio = -100
 fin = 100
-aumento= 1
+aumento= 0.10
 while inicio <= fin:
     inicio+=aumento
     n = len(matriz[0])
@@ -32,10 +36,12 @@ while inicio <= fin:
 
     determinante = np.linalg.det(matrizPrueba)
     if determinante ==0:
-       print(inicio)
-    elif determinante < 0.1 and determinante > -0.1:
         print(inicio)
-        
+        listavaloresP.append(inicio)
+    elif determinante <= 0.01 and determinante >= -00.1:
+        print(inicio)
+        listavaloresP.append(inicio)
+print("valores Propios  : ", listavaloresP)        
         
         
         
